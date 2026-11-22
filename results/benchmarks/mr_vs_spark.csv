@@ -1,0 +1,3 @@
+job,rows,mapreduce_seconds,spark_seconds,identical,mismatching_keys
+wordcount,300249,23.0,4.66,True,0
+product_stats,300249,20.0,1.03,True,0

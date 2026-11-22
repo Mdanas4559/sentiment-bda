@@ -1,0 +1,12 @@
+# A hypothesis you validate on a hand-labeled sample, not ground truth. Tune for the chosen category.
+battery_charging: [battery, batteries, charge, charging, charger, charged, "power bank", mah, "battery life"]
+cable_connectivity: [cable, cord, usb, lightning, "type-c", port, bluetooth, wireless, connection, connect, connector]
+screen_display: [screen, display, resolution, brightness, touchscreen, "screen protector"]
+camera_photo: [camera, photo, photos, picture, pictures, lens, video]
+sound_audio: [sound, audio, speaker, volume, mic, microphone, bass, noise]
+build_durability: [durable, durability, sturdy, flimsy, broke, broken, cracked, crack, "build quality", quality, material, plastic, "fell apart", "stopped working", died, dead, defective, damaged]
+fit_compatibility: [fit, fits, fitting, compatible, compatibility, size, loose, tight]
+price_value: [price, cost, worth, value, money, expensive, overpriced, affordable, bargain, deal, cheap]
+delivery_packaging: [delivery, delivered, shipping, shipped, arrived, packaging, package, box, packed]
+design_appearance: [design, look, looks, color, colour, style, sleek, stylish, appearance]
+customer_service: [seller, return, returned, refund, warranty, support, "customer service", replacement]

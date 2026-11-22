@@ -1,0 +1,59 @@
+# Used by scripts/run_sample.sh (SENTIMENT_CONFIG). Local disk only, tiny settings, separate output folders.
+project:
+  seed: 42
+
+paths:
+  base: "data/lake_sample"
+  raw_reviews: "raw/reviews_sample.jsonl"
+  raw_meta: "raw/meta_sample.jsonl"
+  results: "results_sample"
+
+spark:
+  master: "local[2]"
+  driver_memory: "2g"
+  shuffle_partitions: 8
+  adaptive: true
+
+data:
+  sample_fraction: 1.0
+  min_product_reviews: 5
+
+clean:
+  min_words: 3
+  max_words: 600
+  min_ascii_ratio: 0.9
+
+features:
+  vocab_size: 20000
+  min_df: 2
+  use_bigrams: true
+  keep_negations: true
+
+train:
+  experiment_name: "sample"
+  train_fraction: 0.8
+  split: "random"
+  temporal_cutoff_year: 2021
+  use_class_weights: true
+  save_scoring_model: true
+  models: ["logreg", "naive_bayes", "linear_svc", "random_forest"]
+  rf:
+    train_rows: 5000
+    vocab_size: 500
+    num_trees: 20
+    max_depth: 8
+
+aspects:
+  lexicon_file: "config/aspects.yaml"
+  min_clause_chars: 15
+  pos_threshold: 0.6
+  neg_threshold: 0.4
+  min_mentions_per_product: 2
+
+mapreduce:
+  n_rows: 2000
+
+benchmark:
+  cores: [1, 2]
+  fractions: [0.5, 1.0]
+  repetitions: 1

@@ -1,0 +1,70 @@
+{
+  "n_rows": 154,
+  "tagging_precision": 0.7662337662337663,
+  "tagging_precision_by_aspect": {
+    "battery_charging": {
+      "tagging_precision": 0.9285714286,
+      "n": 14
+    },
+    "build_durability": {
+      "tagging_precision": 1.0,
+      "n": 14
+    },
+    "cable_connectivity": {
+      "tagging_precision": 0.8571428571,
+      "n": 14
+    },
+    "camera_photo": {
+      "tagging_precision": 0.6428571429,
+      "n": 14
+    },
+    "customer_service": {
+      "tagging_precision": 0.4285714286,
+      "n": 14
+    },
+    "delivery_packaging": {
+      "tagging_precision": 0.7857142857,
+      "n": 14
+    },
+    "design_appearance": {
+      "tagging_precision": 0.8571428571,
+      "n": 14
+    },
+    "fit_compatibility": {
+      "tagging_precision": 0.9285714286,
+      "n": 14
+    },
+    "price_value": {
+      "tagging_precision": 0.8571428571,
+      "n": 14
+    },
+    "screen_display": {
+      "tagging_precision": 0.8571428571,
+      "n": 14
+    },
+    "sound_audio": {
+      "tagging_precision": 0.2857142857,
+      "n": 14
+    }
+  },
+  "n_correctly_tagged": 118,
+  "polarity_agreement_all": 0.7372881355932204,
+  "polarity_agreement_non_neutral": 0.9534883720930233,
+  "confusion_human_vs_model": {
+    "negative": {
+      "negative": 15,
+      "neutral": 5,
+      "positive": 3
+    },
+    "neutral": {
+      "negative": 5,
+      "neutral": 5,
+      "positive": 11
+    },
+    "positive": {
+      "negative": 1,
+      "neutral": 6,
+      "positive": 67
+    }
+  }
+}

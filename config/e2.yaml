@@ -1,0 +1,59 @@
+project:
+  seed: 42
+
+paths:
+  # HDFS URI (match fs.defaultFS) or a local folder such as "data" for the fallback
+  base: "hdfs://localhost:9000/sentiment"
+  raw_reviews: "raw/Cell_Phones_and_Accessories.jsonl"
+  raw_meta: "raw/meta_Cell_Phones_and_Accessories.jsonl"
+  results: "results"             # always local and committed
+
+spark:
+  master: "local[*]"             # the benchmark overrides this with local[N]
+  driver_memory: "5g"            # leaves room for the Hadoop daemons on a 16 GB laptop
+  shuffle_partitions: 64
+  adaptive: true
+
+data:
+  sample_fraction: 1.0           # < 1.0 for the dev tier
+  min_product_reviews: 200       # products shown in dashboard tables
+
+clean:
+  min_words: 3
+  max_words: 600
+  min_ascii_ratio: 0.9
+
+features:
+  vocab_size: 100000
+  min_df: 5
+  use_bigrams: false
+  keep_negations: true           # false only for experiment E3
+
+train:
+  experiment_name: "e2_unigram_only"        # metrics are saved under results/metrics/<name>/
+  train_fraction: 0.8
+  split: "random"                # random | temporal
+  temporal_cutoff_year: 2021
+  use_class_weights: true        # false only for experiment E4
+  save_scoring_model: false       # only the "main" run should overwrite the scoring model
+  models: ["logreg"]
+  rf:                            # Random Forest is trained small on purpose (see README)
+    train_rows: 100000
+    vocab_size: 1000
+    num_trees: 50
+    max_depth: 10
+
+aspects:
+  lexicon_file: "config/aspects.yaml"
+  min_clause_chars: 15
+  pos_threshold: 0.6
+  neg_threshold: 0.4
+  min_mentions_per_product: 10
+
+mapreduce:
+  n_rows: 300000                 # MapReduce input size (YARN on one node is slow on millions)
+
+benchmark:
+  cores: [1, 2, 4, 8]            # cap at your logical CPU count (nproc)
+  fractions: [0.1, 0.25, 0.5, 1.0]
+  repetitions: 2
